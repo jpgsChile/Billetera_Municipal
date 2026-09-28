@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Demo interactiva privada de la Billetera Municipal sobre Stellar/Soroban." />
+    <meta name="theme-color" content="#565656" />
+    <title>Billetera Municipal · Demo Trust-Native</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <span class="brand-mark">BM</span>
+        <span>
+          <strong>Billetera Municipal</strong>
+          <small>Stellar · Soroban</small>
+        </span>
+      </a>
+      <div class="topbar-actions">
+        <span class="network-pill"><i></i> Testnet conceptual</span>
+        <span class="private-pill">Acceso privado</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="hero-copy">
+          <p class="eyebrow">DE LA ORDENANZA A LA RENDICIÓN DE CUENTAS</p>
+          <h1>Una sola historia pública.<br /><span>Cada decisión deja evidencia.</span></h1>
+          <p class="hero-lead">
+            Recorre un caso municipal completo y observa cómo actores, votos, documentos y estados
+            quedan vinculados en una secuencia auditable, sin reemplazar los sistemas administrativos.
+          </p>
+          <div class="hero-actions">
+            <button class="button button-primary" id="start-demo">Iniciar recorrido <span>→</span></button>
+            <button class="button button-ghost" data-open-architecture>Ver arquitectura</button>
+          </div>
+          <p class="simulation-note">Simulación demostrativa · No envía transacciones reales a la red</p>
+        </div>
+
+        <aside class="case-card" aria-label="Ficha del caso">
+          <div class="case-card-head">
+            <span class="case-kicker">CASO BASE</span>
+            <span class="status-dot">Preparado</span>
+          </div>
+          <h2>Presupuesto Participativo 2027</h2>
+          <p>Municipalidad Provincial de Tocache</p>
+          <dl class="case-grid">
+            <div><dt>Ciclo</dt><dd>2210 · 001-2026-MPT · 2027</dd></div>
+            <div><dt>Génesis</dt><dd>Ordenanza municipal</dd></div>
+            <div><dt>Modelo</dt><dd>13 transiciones administrativas</dd></div>
+            <div><dt>Confianza</dt><dd>Roles + huellas + tiempo</dd></div>
+          </dl>
+          <div class="document-fingerprint">
+            <span>HUELLA DEL DOCUMENTO</span>
+            <code>ec76ae49…3359dc24</code>
+          </div>
+        </aside>
+      </section>
+
+      <section class="simulator" id="recorrido" aria-labelledby="sim-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">EXPEDIENTE VIVO</p>
+            <h2 id="sim-title">Recorrido auditable del proyecto</h2>
+          </div>
+          <div class="simulator-tools">
+            <span id="progress-label">0 de 8 hitos registrados</span>
+            <button class="icon-button" id="reset-demo" title="Reiniciar la demostración" aria-label="Reiniciar la demostración">↻</button>
+          </div>
+        </div>
+
+        <nav class="state-rail" id="state-rail" aria-label="Estados del expediente"></nav>
+
+        <div class="workspace">
+          <aside class="ledger-panel panel" aria-label="Libro de eventos">
+            <div class="panel-title-row">
+              <div>
+                <span class="panel-overline">LEDGER</span>
+                <h3>Eventos del ciclo</h3>
+              </div>
+              <span class="counter" id="event-count">0</span>
+            </div>
+            <div class="empty-ledger" id="empty-ledger">
+              <span class="empty-symbol">◎</span>
+              <p>Aún no hay eventos.</p>
+              <small>Comienza el recorrido para abrir el ciclo.</small>
+            </div>
+            <ol class="event-list" id="event-list"></ol>
+          </aside>
+
+          <article class="decision-panel panel" id="decision-panel" aria-live="polite"></article>
+
+          <aside class="evidence-panel panel" id="evidence-panel" aria-label="Evidencias y validaciones"></aside>
+        </div>
+
+        <div class="completion" id="completion" hidden>
+          <div class="completion-icon">✓</div>
+          <div>
+            <p class="eyebrow">CICLO VERIFICABLE</p>
+            <h3>El caso quedó trazado de principio a fin</h3>
+            <p>Ocho decisiones, sus responsables y sus evidencias forman una historia íntegra y recalculable.</p>
+          </div>
+          <button class="button button-light" id="verify-case">Verificar expediente</button>
+        </div>
+      </section>
+
+      <section class="trust" id="arquitectura" aria-labelledby="trust-title">
+        <div class="trust-copy">
+          <p class="eyebrow">ARQUITECTURA WEB3 TRUST-NATIVE</p>
+          <h2 id="trust-title">La confianza viaja con el expediente.</h2>
+          <p>
+            La billetera no duplica MEF, SIAF, SEACE o INFOBRAS. Usa el CUI como puente,
+            conserva la secuencia de decisiones y permite verificar cada documento desde una sola vista.
+          </p>
+          <button class="text-button" data-open-architecture>Explorar contratos y guardas <span>↗</span></button>
+        </div>
+        <div class="architecture-map" aria-label="Diagrama simplificado de arquitectura">
+          <div class="arch-row actors-row">
+            <span>Concejo</span><span>Equipo técnico</span><span>Agentes</span><span>Comité</span>
+          </div>
+          <div class="arch-connector"><i></i><b>Autorización por rol</b><i></i></div>
+          <div class="contract-core">
+            <div class="stellar-orb">✦</div>
+            <div>
+              <small>SOROBAN · ESTADO PERSISTENTE</small>
+              <strong>Ciclo + Proyecto + Evidencia</strong>
+              <code>ciclo_id = 2210:001-2026-MPT:2027</code>
+            </div>
+          </div>
+          <div class="arch-connector"><i></i><b>Lectura por CUI</b><i></i></div>
+          <div class="arch-row systems-row">
+            <span>MEF</span><span>SIAF</span><span>SEACE</span><span>INFOBRAS</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Billetera Municipal · Demo institucional privada</span>
+      <span>Integridad verificable · Datos mínimos · Interoperabilidad</span>
+    </footer>
+
+    <dialog class="drawer" id="detail-drawer">
+      <div class="drawer-header">
+        <div>
+          <p class="eyebrow" id="drawer-eyebrow">DETALLE TÉCNICO</p>
+          <h2 id="drawer-title">Transacción</h2>
+        </div>
+        <button class="icon-button" data-close-dialog aria-label="Cerrar">×</button>
+      </div>
+      <div class="drawer-body" id="drawer-body"></div>
+    </dialog>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

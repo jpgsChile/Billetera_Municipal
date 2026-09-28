@@ -1,0 +1,10 @@
+{
+  "name": "billetera-municipal-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Demo interactiva Trust-Native de la Billetera Municipal sobre Stellar/Soroban.",
+  "scripts": {
+    "check": "node --check app.js",
+    "build": "node scripts/build.mjs"
+  }
+}
